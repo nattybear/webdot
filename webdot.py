@@ -1,5 +1,5 @@
 from bottle import route, run, template, request, static_file
-from dot import add_dot
+from dot import add_dot, save_dot, make_dot
 
 @route('/')
 def hello():
@@ -13,7 +13,9 @@ def input():
 def add():
     src = request.GET.src
     dst = request.GET.dst
-    ret = add_dot(src, dst)
-    return static_file('result.png', root='.')
+    g = add_dot(src, dst)
+    make_dot(g)
+    save_dot(g)
+    return static_file('result.png', '.')
 
 run()
