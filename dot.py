@@ -23,3 +23,6 @@ def load_dot():
     f = open('graph.dump', 'rb')
     g = load(f)
     return g
+    
+def remove_dot():
+    pass
