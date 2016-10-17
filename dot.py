@@ -24,5 +24,7 @@ def load_dot():
     g = load(f)
     return g
     
-def remove_dot():
-    pass
+def remove_dot(node):
+    g = load_dot()
+    g.remove_node(node)
+    return g
