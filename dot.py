@@ -16,12 +16,14 @@ def make_dot(g):
 def save_dot(g):
     f = open('graph.dump', 'wb')
     dump(g, f)
+    f.close()
     print '[*] saved to graph.dump'
     return
    
 def load_dot():
     f = open('graph.dump', 'rb')
     g = load(f)
+    f.close()
     return g
     
 def remove_dot(node):
