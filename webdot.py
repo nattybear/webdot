@@ -16,7 +16,8 @@ def add():
     g = add_dot(src, dst)
     make_dot(g)
     save_dot(g)
-    return static_file('result.png', '.')
+    # return static_file('result.png', '.')
+    return template('show', picture='result.png')
     
 @route('/input2')
 def input2():
@@ -28,10 +29,17 @@ def remove():
     g = remove_dot(node)
     make_dot(g)
     save_dot(g)
-    return static_file('result.png', '.')
+    # return static_file('result.png', '.')
+    return template('show', picture='result.png')
     
 @route('/show')
 def show():
-    return static_file('result.png', '.')
+    # return static_file('result.png', '.')
+    return template('show', picture='result.png')
+    
+@route('/<picture>')
+def serve_picture(picture):
+    return static_file(picture, root='.')
+
     
 run()
