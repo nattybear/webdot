@@ -1,4 +1,4 @@
-from bottle import route, run, template, request, static_file
+from bottle import route, run, template, request, static_file, TEMPLATES
 from dot import add_dot, save_dot, make_dot, remove_dot
 
 @route('/')
@@ -35,6 +35,7 @@ def remove():
 @route('/show')
 def show():
     # return static_file('result.png', '.')
+    TEMPLATES.clear()
     return template('show', picture='result.png')
     
 @route('/<picture>')
@@ -42,4 +43,4 @@ def serve_picture(picture):
     return static_file(picture, root='.')
 
     
-run()
+run(debug=True)
